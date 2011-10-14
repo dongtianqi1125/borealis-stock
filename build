@@ -1,0 +1,7 @@
+export CVS_SANDBOX=$HOME/Workspace/borealis_summer_2008
+export BOREALIS_HOME=$CVS_SANDBOX/borealis
+export BOREALIS_TOOL=/opt/borealis-tools
+source $BOREALIS_TOOL/rc
+source $BOREALIS_HOME/init.sh
+
+./configure --with-xercesc=$INSTALL_XERCESC --with-antlr=$INSTALL_ANTLR --with-bdb=$INSTALL_BDB --with-ocv=$INSTALL_OCV --with-gsl=$INSTALL_GSL --with-nmstl=$INSTALL_NMSTL --with-borealis=$BOREALIS_HOME/src
