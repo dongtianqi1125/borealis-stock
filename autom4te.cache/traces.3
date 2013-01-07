@@ -2436,7 +2436,34 @@ m4trace:configure.ac:138: -1- AC_ANTLR
 m4trace:configure.ac:138: -1- m4_pattern_allow([^ANTLRINCLUDE$])
 m4trace:configure.ac:138: -1- m4_pattern_allow([^ANTLRLIB$])
 m4trace:configure.ac:138: -1- m4_pattern_allow([^ANTLR_JAR_FILE$])
-m4trace:configure.ac:145: -1- AC_DEFUN([AC_BDB], [AC_ARG_WITH(bdb, [  --with-bdb], ,)
+m4trace:configure.ac:143: -1- AC_DEFUN([AC_ANTLR3], [AC_ARG_WITH(antlr3, [  --with-antlr3], , )
+AC_MSG_CHECKING([for ANTLR3])
+
+# sensible default if nothing specified
+if test "x$with_antlr3" = x; then
+    with_antlr3=/opt/borealis-tools/antlr3c
+fi
+
+if test -f "$with_antlr3/include/antlr3.h"; then
+    ANTLR3DIR=$with_antlr3
+    ANTLR3LIB="$ANTLR3DIR/lib/libantlr3c.la "
+    ANTLR3INCLUDE="-I$ANTLR3DIR/include"
+    AC_MSG_RESULT([yes])
+else
+    AC_MSG_RESULT([no])
+    AC_ERROR($with_antlr3/include/antlr3.h does not exist)
+fi
+AC_SUBST(ANTLR3INCLUDE)
+AC_SUBST(ANTLR3LIB)
+])
+m4trace:configure.ac:165: -1- AC_ANTLR3
+m4trace:configure.ac:165: -1- _m4_warn([obsolete], [The macro `AC_ERROR' is obsolete.
+You should run autoupdate.], [../../lib/autoconf/oldnames.m4:34: AC_ERROR is expanded from...
+configure.ac:143: AC_ANTLR3 is expanded from...
+configure.ac:165: the top level])
+m4trace:configure.ac:165: -1- m4_pattern_allow([^ANTLR3INCLUDE$])
+m4trace:configure.ac:165: -1- m4_pattern_allow([^ANTLR3LIB$])
+m4trace:configure.ac:170: -1- AC_DEFUN([AC_BDB], [AC_ARG_WITH(bdb, [  --with-bdb], ,)
 AC_MSG_CHECKING([for BDB])
 AC_MSG_RESULT(with_bdb = $with_bdb)
 
@@ -2491,16 +2518,16 @@ AC_SUBST(BDBLIB)
 AM_CONDITIONAL(COND_BDB, test x${bdb} = xtrue)
 
 ])
-m4trace:configure.ac:202: -1- AC_BDB
-m4trace:configure.ac:202: -1- m4_pattern_allow([^BDBDIR$])
-m4trace:configure.ac:202: -1- m4_pattern_allow([^BDBINCLUDE$])
-m4trace:configure.ac:202: -1- m4_pattern_allow([^BDBLIB$])
-m4trace:configure.ac:202: -1- AM_CONDITIONAL([COND_BDB], [test x${bdb} = xtrue])
-m4trace:configure.ac:202: -1- m4_pattern_allow([^COND_BDB_TRUE$])
-m4trace:configure.ac:202: -1- m4_pattern_allow([^COND_BDB_FALSE$])
-m4trace:configure.ac:202: -1- _AM_SUBST_NOTMAKE([COND_BDB_TRUE])
-m4trace:configure.ac:202: -1- _AM_SUBST_NOTMAKE([COND_BDB_FALSE])
-m4trace:configure.ac:209: -1- AC_DEFUN([AC_OCV], [AC_ARG_WITH(ocv,    [  --with-ocv], , )
+m4trace:configure.ac:227: -1- AC_BDB
+m4trace:configure.ac:227: -1- m4_pattern_allow([^BDBDIR$])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^BDBINCLUDE$])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^BDBLIB$])
+m4trace:configure.ac:227: -1- AM_CONDITIONAL([COND_BDB], [test x${bdb} = xtrue])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^COND_BDB_TRUE$])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^COND_BDB_FALSE$])
+m4trace:configure.ac:227: -1- _AM_SUBST_NOTMAKE([COND_BDB_TRUE])
+m4trace:configure.ac:227: -1- _AM_SUBST_NOTMAKE([COND_BDB_FALSE])
+m4trace:configure.ac:234: -1- AC_DEFUN([AC_OCV], [AC_ARG_WITH(ocv,    [  --with-ocv], , )
 AC_MSG_CHECKING([for OCV])
 
 if test "x$with_ocv" = x; then
@@ -2525,11 +2552,11 @@ AC_SUBST(OCVDIR)
 AC_SUBST(OCVINCLUDE)
 AC_SUBST(OCVLIB)
 ])
-m4trace:configure.ac:236: -1- AC_OCV
-m4trace:configure.ac:236: -1- m4_pattern_allow([^OCVDIR$])
-m4trace:configure.ac:236: -1- m4_pattern_allow([^OCVINCLUDE$])
-m4trace:configure.ac:236: -1- m4_pattern_allow([^OCVLIB$])
-m4trace:configure.ac:243: -1- AC_DEFUN([AC_GSL], [AC_ARG_WITH(gsl,    [  --with-gsl], , )
+m4trace:configure.ac:261: -1- AC_OCV
+m4trace:configure.ac:261: -1- m4_pattern_allow([^OCVDIR$])
+m4trace:configure.ac:261: -1- m4_pattern_allow([^OCVINCLUDE$])
+m4trace:configure.ac:261: -1- m4_pattern_allow([^OCVLIB$])
+m4trace:configure.ac:268: -1- AC_DEFUN([AC_GSL], [AC_ARG_WITH(gsl,    [  --with-gsl], , )
 AC_MSG_CHECKING([for GSL])
 
 if test "x$with_gsl" = x; then
@@ -2553,11 +2580,11 @@ AC_SUBST(GSLDIR)
 AC_SUBST(GSLINCLUDE)
 AC_SUBST(GSLLIB)
 ])
-m4trace:configure.ac:269: -1- AC_GSL
-m4trace:configure.ac:269: -1- m4_pattern_allow([^GSLDIR$])
-m4trace:configure.ac:269: -1- m4_pattern_allow([^GSLINCLUDE$])
-m4trace:configure.ac:269: -1- m4_pattern_allow([^GSLLIB$])
-m4trace:configure.ac:276: -1- AC_DEFUN([AC_NMSTL], [AC_ARG_WITH(nmstl,    [  --with-nmstl], , )
+m4trace:configure.ac:294: -1- AC_GSL
+m4trace:configure.ac:294: -1- m4_pattern_allow([^GSLDIR$])
+m4trace:configure.ac:294: -1- m4_pattern_allow([^GSLINCLUDE$])
+m4trace:configure.ac:294: -1- m4_pattern_allow([^GSLLIB$])
+m4trace:configure.ac:301: -1- AC_DEFUN([AC_NMSTL], [AC_ARG_WITH(nmstl,    [  --with-nmstl], , )
 AC_MSG_CHECKING([for NMSTL])
 
 if test "x$with_nmstl" = x; then
@@ -2595,22 +2622,22 @@ AC_SUBST(NMSTLINCLUDE)
 AC_SUBST(NMSTLLIB)
 AC_SUBST(NMSTLSUBDIR)
 ])
-m4trace:configure.ac:317: -1- AC_NMSTL
-m4trace:configure.ac:317: -1- m4_pattern_allow([^NMSTLDIR$])
-m4trace:configure.ac:317: -1- m4_pattern_allow([^NMSTLINCLUDE$])
-m4trace:configure.ac:317: -1- m4_pattern_allow([^NMSTLLIB$])
-m4trace:configure.ac:317: -1- m4_pattern_allow([^NMSTLSUBDIR$])
-m4trace:configure.ac:346: -1- m4_pattern_allow([^EXTERNALLIB$])
-m4trace:configure.ac:349: -1- m4_pattern_allow([^EXTERNALINCLUDE$])
-m4trace:configure.ac:352: -1- m4_pattern_allow([^BOREALISLIB$])
-m4trace:configure.ac:355: -1- m4_pattern_allow([^BOREALISINCLUDE$])
-m4trace:configure.ac:359: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.ac:359: -1- m4_pattern_allow([^LTLIBOBJS$])
-m4trace:configure.ac:359: -1- AM_CONDITIONAL([am__EXEEXT], [test -n "$EXEEXT"])
-m4trace:configure.ac:359: -1- m4_pattern_allow([^am__EXEEXT_TRUE$])
-m4trace:configure.ac:359: -1- m4_pattern_allow([^am__EXEEXT_FALSE$])
-m4trace:configure.ac:359: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_TRUE])
-m4trace:configure.ac:359: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_FALSE])
-m4trace:configure.ac:359: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
-m4trace:configure.ac:359: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
-m4trace:configure.ac:359: -1- _LT_PROG_LTMAIN
+m4trace:configure.ac:342: -1- AC_NMSTL
+m4trace:configure.ac:342: -1- m4_pattern_allow([^NMSTLDIR$])
+m4trace:configure.ac:342: -1- m4_pattern_allow([^NMSTLINCLUDE$])
+m4trace:configure.ac:342: -1- m4_pattern_allow([^NMSTLLIB$])
+m4trace:configure.ac:342: -1- m4_pattern_allow([^NMSTLSUBDIR$])
+m4trace:configure.ac:371: -1- m4_pattern_allow([^EXTERNALLIB$])
+m4trace:configure.ac:374: -1- m4_pattern_allow([^EXTERNALINCLUDE$])
+m4trace:configure.ac:377: -1- m4_pattern_allow([^BOREALISLIB$])
+m4trace:configure.ac:380: -1- m4_pattern_allow([^BOREALISINCLUDE$])
+m4trace:configure.ac:384: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:384: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.ac:384: -1- AM_CONDITIONAL([am__EXEEXT], [test -n "$EXEEXT"])
+m4trace:configure.ac:384: -1- m4_pattern_allow([^am__EXEEXT_TRUE$])
+m4trace:configure.ac:384: -1- m4_pattern_allow([^am__EXEEXT_FALSE$])
+m4trace:configure.ac:384: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_TRUE])
+m4trace:configure.ac:384: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_FALSE])
+m4trace:configure.ac:384: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
+m4trace:configure.ac:384: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+m4trace:configure.ac:384: -1- _LT_PROG_LTMAIN

@@ -763,6 +763,8 @@ COND_BDB_TRUE
 BDBLIB
 BDBINCLUDE
 BDBDIR
+ANTLR3LIB
+ANTLR3INCLUDE
 ANTLR_JAR_FILE
 ANTLRLIB
 ANTLRINCLUDE
@@ -894,6 +896,7 @@ enable_libtool_lock
 with_borealis
 with_xercesc
 with_antlr
+with_antlr3
 with_bdb
 with_ocv
 with_gsl
@@ -1551,6 +1554,7 @@ Optional Packages:
   --with-borealis
   --with-xercesc
   --with-antlr
+  --with-antlr3
   --with-bdb
   --with-ocv
   --with-gsl
@@ -5042,13 +5046,13 @@ if test "${lt_cv_nm_interface+set}" = set; then :
 else
   lt_cv_nm_interface="BSD nm"
   echo "int some_variable = 0;" > conftest.$ac_ext
-  (eval echo "\"\$as_me:5045: $ac_compile\"" >&5)
+  (eval echo "\"\$as_me:5049: $ac_compile\"" >&5)
   (eval "$ac_compile" 2>conftest.err)
   cat conftest.err >&5
-  (eval echo "\"\$as_me:5048: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
+  (eval echo "\"\$as_me:5052: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
   (eval "$NM \"conftest.$ac_objext\"" 2>conftest.err > conftest.out)
   cat conftest.err >&5
-  (eval echo "\"\$as_me:5051: output\"" >&5)
+  (eval echo "\"\$as_me:5055: output\"" >&5)
   cat conftest.out >&5
   if $GREP 'External.*some_variable' conftest.out > /dev/null; then
     lt_cv_nm_interface="MS dumpbin"
@@ -6243,7 +6247,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 6246 "configure"' > conftest.$ac_ext
+  echo '#line 6250 "configure"' > conftest.$ac_ext
   if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -8295,11 +8299,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8298: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8302: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:8302: \$? = $ac_status" >&5
+   echo "$as_me:8306: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8634,11 +8638,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8637: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8641: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:8641: \$? = $ac_status" >&5
+   echo "$as_me:8645: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8739,11 +8743,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8742: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8746: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8746: \$? = $ac_status" >&5
+   echo "$as_me:8750: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -8794,11 +8798,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8797: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8801: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8801: \$? = $ac_status" >&5
+   echo "$as_me:8805: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -11178,7 +11182,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<_LT_EOF
-#line 11181 "configure"
+#line 11185 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -11274,7 +11278,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<_LT_EOF
-#line 11277 "configure"
+#line 11281 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13230,11 +13234,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13233: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13237: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:13237: \$? = $ac_status" >&5
+   echo "$as_me:13241: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -13329,11 +13333,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13332: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13336: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13336: \$? = $ac_status" >&5
+   echo "$as_me:13340: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -13381,11 +13385,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13384: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13388: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13388: \$? = $ac_status" >&5
+   echo "$as_me:13392: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14761,6 +14765,35 @@ fi
 
 
 
+# Check whether --with-antlr3 was given.
+if test "${with_antlr3+set}" = set; then :
+  withval=$with_antlr3;
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANTLR3" >&5
+$as_echo_n "checking for ANTLR3... " >&6; }
+
+# sensible default if nothing specified
+if test "x$with_antlr3" = x; then
+    with_antlr3=/opt/borealis-tools/antlr3c
+fi
+
+if test -f "$with_antlr3/include/antlr3.h"; then
+    ANTLR3DIR=$with_antlr3
+    ANTLR3LIB="$ANTLR3DIR/lib/libantlr3c.la "
+    ANTLR3INCLUDE="-I$ANTLR3DIR/include"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+    as_fn_error $? "$with_antlr3/include/antlr3.h does not exist" "$LINENO" 5
+fi
+
+
+
+
+
 
 
 # Check whether --with-bdb was given.
@@ -15042,10 +15075,10 @@ EXTERNALLIB="$GSLLIB $BDBLIB $OCVLIB"
 EXTERNALINCLUDE="$BDBINCLUDE $GSLINCLUDE $OCVINCLUDE $ARRAY_INCLUDE $PREDICT_INCLUDE"
 
 
-BOREALISLIB="$NMSTLLIB $XERCESCLIB $ANTLRLIB"
+BOREALISLIB="$NMSTLLIB $XERCESCLIB $ANTLRLIB $ANTLR3LIB"
 
 
-BOREALISINCLUDE="$NMSTLINCLUDE $XERCESCINCLUDE $ANTLRINCLUDE"
+BOREALISINCLUDE="$NMSTLINCLUDE $XERCESCINCLUDE $ANTLRINCLUDE $ANTLR3INCLUDE"
 
 
 

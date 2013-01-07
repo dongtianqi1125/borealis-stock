@@ -99,6 +99,8 @@ distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
 ACLOCAL = ${SHELL} /home/jj/Workspace/cpp/borealis-test/config/missing --run aclocal-1.11
 AMTAR = ${SHELL} /home/jj/Workspace/cpp/borealis-test/config/missing --run tar
+ANTLR3INCLUDE = -I/opt/borealis-tools/antlr3c/include
+ANTLR3LIB = /opt/borealis-tools/antlr3c/lib/libantlr3c.la 
 ANTLRINCLUDE = -I/opt/borealis-tools/antlr/include
 ANTLRLIB = /opt/borealis-tools/antlr/lib/libantlr.a 
 ANTLR_JAR_FILE = /opt/borealis-tools/antlr/lib/antlr.jar
@@ -110,9 +112,9 @@ AWK = gawk
 BDBDIR = 
 BDBINCLUDE = -I/home/jj/Workspace/cpp/borealis-test/external/bdb/stub
 BDBLIB = 
-BOREALISINCLUDE = -I/opt/borealis-tools/nmstl/include -I/opt/borealis-tools/xercesc/include -I/opt/borealis-tools/antlr/include
-BOREALISLIB = -L/opt/borealis-tools/nmstl/lib -lNMSTL -lexpat -lpthread -lreadline -lncurses -L/opt/borealis-tools/xercesc/lib -lxerces-c /opt/borealis-tools/antlr/lib/libantlr.a 
-BOREALISROOT = /home/jj/Workspace/borealis_summer_2008/borealis/src
+BOREALISINCLUDE = -I/opt/borealis-tools/nmstl/include -I/opt/borealis-tools/xercesc/include -I/opt/borealis-tools/antlr/include -I/opt/borealis-tools/antlr3c/include
+BOREALISLIB = -L/opt/borealis-tools/nmstl/lib -lNMSTL -lexpat -lpthread -lreadline -lncurses -L/opt/borealis-tools/xercesc/lib -lxerces-c /opt/borealis-tools/antlr/lib/libantlr.a  /opt/borealis-tools/antlr3c/lib/libantlr3c.la 
+BOREALISROOT = /home/jj/Workspace/borealis_summer_2008/conger/src
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -Wall -Werror
@@ -240,8 +242,8 @@ YFLAGS =
 AM_CFLAGS = -g -Wall -Werror $(MYFLAGS)
 AM_CXXFLAGS = -g -Wall -Werror $(MYFLAGS)
 MAIN = stock
-BOREALIS_SRC = /home/jj/Workspace/borealis_summer_2008/borealis/src
-LDADD_EXTRAS = -ldl  -L/opt/borealis-tools/nmstl/lib -lNMSTL -lexpat -lpthread -lreadline -lncurses -L/opt/borealis-tools/xercesc/lib -lxerces-c /opt/borealis-tools/antlr/lib/libantlr.a   -L/opt/borealis-tools/gsl/lib -lgsl -lgslcblas  
+BOREALIS_SRC = /home/jj/Workspace/borealis_summer_2008/conger/src
+LDADD_EXTRAS = -ldl  -L/opt/borealis-tools/nmstl/lib -lNMSTL -lexpat -lpthread -lreadline -lncurses -L/opt/borealis-tools/xercesc/lib -lxerces-c /opt/borealis-tools/antlr/lib/libantlr.a  /opt/borealis-tools/antlr3c/lib/libantlr3c.la   -L/opt/borealis-tools/gsl/lib -lgsl -lgslcblas  
 LDADD = -L$(BOREALIS_SRC)/modules/common          -lborealiscommon     \
         -L$(BOREALIS_SRC)/modules/catalog         -lborealiscatalog    \
         -L$(BOREALIS_SRC)/modules/util            -lborealisutil       \

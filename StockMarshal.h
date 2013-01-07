@@ -62,7 +62,7 @@ class StockMarshal
 
     struct PacketTuple
     {
-        int32    time;
+        int32    currenttime;
         double    price;
     } __attribute__((__packed__));
 
@@ -104,9 +104,9 @@ class StockMarshal
 
     struct AggregateTuple
     {
-        int32    time;
-        double    maxprice;
+        double    price;
         int32    currenttime;
+        double    maxprice;
     } __attribute__((__packed__));
 
     /// The receivedAggregate method must be defined by the application.

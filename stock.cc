@@ -42,7 +42,7 @@ void StockMarshal::sentPacket()
     StockData one = data::stock.front();
     data::stock.pop_front();
     Packet tuple;
-    tuple._data.time = one.time;
+    tuple._data.currenttime = one.time;
     tuple._data.price = one.price;
     batchPacket(&tuple);
     string time = string(ctime(&(one.time)));
@@ -76,12 +76,9 @@ void parseRecord(string record, time_t *mytime, float *price)
     t->tm_min = mm;
     t->tm_sec = ss;
     *mytime = mktime(t);
-    
-    // cout << ctime(mytime);
 
     string tmp = record.substr(9, record.length() - 9);
     *price = atof(tmp.substr(0, tmp.find_first_of('\t') + 1).c_str());
-    // cout << (*mytime) << " " << *price << endl;
 }
 
 void processRead(string filename)
@@ -99,11 +96,11 @@ void processRead(string filename)
         perror(filename.c_str());
         exit(errno);
     }
+    int tupleCount = 0;
     while (stream.good())
     {
         char other[100];
         stream.getline(other, 100);
-        // cout << other;
         
         time_t time = 0;
         float price = 0;
@@ -116,7 +113,11 @@ void processRead(string filename)
         s.time = time;
         s.price = price;
         data::stock.push_back(s);
-        // cout << ctime(&time);
+        tupleCount++;
+        if (tupleCount > 100)
+        {
+            break;
+        }
     }
     data::stock.reverse();
 

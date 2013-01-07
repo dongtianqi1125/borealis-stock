@@ -4,7 +4,7 @@
 #define STOCK_XML     "stock.xml"
 #define MAX_BUFFER      640000000
 
-#define STOCK_ENDPOINT     "127.0.1.1:25000"
+#define STOCK_ENDPOINT     "127.0.0.1:25000"
 
 #define PACKET  "packet"
 #define AGGREGATE  "aggregate"
@@ -144,7 +144,7 @@ void  StockMarshal::connectPacket()
 
     // Starting to produce events on input stream.
     //
-    if (!_client->set_data_path(MAX_BUFFER, Util::get_host_address("127.0.1.1"), 15000))
+    if (!_client->set_data_path(MAX_BUFFER, Util::get_host_address("127.0.0.1"), 15000))
     {   ERROR << "Failed setting data path";
     }
     else
@@ -306,7 +306,7 @@ Status  StockMarshal::AggregateHandler(ptr<StreamEvent>  event)
     uint32        offset = 0;
 //..............................................................................
 
-    std::cout << event->_bin_tuples;
+
     // For each tuple that was received,
     //
     for (index = 0; index < event->_inserted_count; index++)

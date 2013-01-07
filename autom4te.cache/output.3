@@ -763,6 +763,8 @@ COND_BDB_TRUE
 BDBLIB
 BDBINCLUDE
 BDBDIR
+ANTLR3LIB
+ANTLR3INCLUDE
 ANTLR_JAR_FILE
 ANTLRLIB
 ANTLRINCLUDE
@@ -894,6 +896,7 @@ enable_libtool_lock
 with_borealis
 with_xercesc
 with_antlr
+with_antlr3
 with_bdb
 with_ocv
 with_gsl
@@ -1551,6 +1554,7 @@ Optional Packages:
   --with-borealis
   --with-xercesc
   --with-antlr
+  --with-antlr3
   --with-bdb
   --with-ocv
   --with-gsl
@@ -14765,6 +14769,35 @@ fi
 
 
 
+@%:@ Check whether --with-antlr3 was given.
+if test "${with_antlr3+set}" = set; then :
+  withval=$with_antlr3; 
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANTLR3" >&5
+$as_echo_n "checking for ANTLR3... " >&6; }
+
+# sensible default if nothing specified
+if test "x$with_antlr3" = x; then
+    with_antlr3=/opt/borealis-tools/antlr3c
+fi
+
+if test -f "$with_antlr3/include/antlr3.h"; then
+    ANTLR3DIR=$with_antlr3
+    ANTLR3LIB="$ANTLR3DIR/lib/libantlr3c.la "
+    ANTLR3INCLUDE="-I$ANTLR3DIR/include"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+    as_fn_error $? "$with_antlr3/include/antlr3.h does not exist" "$LINENO" 5 
+fi
+
+
+
+
+
 
 
 @%:@ Check whether --with-bdb was given.
@@ -15046,10 +15079,10 @@ EXTERNALLIB="$GSLLIB $BDBLIB $OCVLIB"
 EXTERNALINCLUDE="$BDBINCLUDE $GSLINCLUDE $OCVINCLUDE $ARRAY_INCLUDE $PREDICT_INCLUDE"
 
 
-BOREALISLIB="$NMSTLLIB $XERCESCLIB $ANTLRLIB"
+BOREALISLIB="$NMSTLLIB $XERCESCLIB $ANTLRLIB $ANTLR3LIB"
 
 
-BOREALISINCLUDE="$NMSTLINCLUDE $XERCESCINCLUDE $ANTLRINCLUDE"
+BOREALISINCLUDE="$NMSTLINCLUDE $XERCESCINCLUDE $ANTLRINCLUDE $ANTLR3INCLUDE"
 
 
 
